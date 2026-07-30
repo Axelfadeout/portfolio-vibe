@@ -782,6 +782,293 @@
   .experience-extra ul{margin:0;padding-left:18px;color:var(--muted);font-size:.9rem;line-height:1.55}
   .experience-extra li+li{margin-top:5px}
   @media(max-width:640px){.experience-extra__content{padding:14px}.experience-toggle__arrow{width:26px;height:26px}}
+
+
+  /* ===== MOBILE RESPONSIVE FIX — video proportions + flip readability ===== */
+  @media (max-width:768px){
+    /* More vertical room: front animations and back copy must never share cramped space. */
+    .tile--big{height:560px}
+    .tile--flip.flipped{height:680px}
+    .ai-tile.flipped{height:790px}
+    .xs-tile.flipped{height:760px}
+    .gormiti-tile.flipped,.smm-tile.flipped{height:700px}
+
+    .tile--flip .face--back{
+      box-sizing:border-box;
+      padding:52px 22px 24px;
+      gap:12px;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+    }
+    .back-hint{top:18px;right:18px}
+    .back-eyebrow{font-size:.62rem;flex:0 0 auto}
+    .back-lead{font-size:1.28rem;line-height:1.28;max-width:none;flex:0 0 auto}
+    .back-list{gap:9px;max-width:none;flex:0 0 auto}
+    .back-list li{font-size:.88rem;line-height:1.45}
+    .back-tools{margin-top:8px;padding-top:8px;flex:0 0 auto}
+    .back-tools span{font-size:.54rem;line-height:1.25}
+    .back-yt{flex:0 0 auto;margin-top:4px}
+
+    /* One stable 16:9 frame. Videos keep their native ratio through letterboxing. */
+    .arca-scene,.gymga-scene,.crypto-scene{
+      height:72%;
+      padding:54px 10px 26px;
+      align-items:center;
+      justify-content:center;
+      box-sizing:border-box;
+    }
+    .arca-video-stage,.gymga-stage,.crypto-stage{
+      width:96%;
+      height:auto;
+      aspect-ratio:16/9;
+      border-radius:18px;
+      flex:0 0 auto;
+    }
+    .arca-video-stage video,.gymga-video,.crypto-video{
+      width:100%;height:100%;
+      object-fit:contain !important;
+      object-position:center center;
+      transform:none !important;
+    }
+
+    /* XSoccer clips: preserve each movie instead of stretching/cropping it. */
+    .xs-scene{height:72%;padding:55px 10px 30px;align-items:center}
+    .xs-video-card{width:47%;height:auto;aspect-ratio:16/9}
+    .xs-video-card video{object-fit:contain !important;transform:none !important;background:#111318}
+
+    /* Portrait AI media: never stretch inside the generated preview. */
+    .ai-media{object-fit:contain !important;object-position:center center}
+
+    /* When centered, activate content without scaling the video itself. */
+    .arca-tile.mobile-active .arca-video-stage video,
+    .gymga-tile.mobile-active .gymga-video,
+    .crypto-tile.mobile-active .crypto-video,
+    .xs-tile:not(.flipped).mobile-active .xs-video-card video{transform:none !important}
+  }
+
+
+  /* ==========================================================
+     MOBILE MEDIA LAYOUT — per-tile sizing, no generic stretching
+     Desktop rules remain unchanged.
+     ========================================================== */
+  @media (max-width:768px){
+    /* More vertical room for the visual and title, without cropping. */
+    .tile--big{height:clamp(500px,138vw,610px)}
+    .tile--big .face--front{overflow:hidden}
+    .tile--big .tile__title{padding:22px 18px}
+    .tile--big.mobile-active .tile__title{transform:translateY(-34%)}
+
+    /* Arcabooking / GymGamEnt / CryptoChronic: identical 16:9 stage. */
+    .arca-scene,.gymga-scene,.crypto-scene{
+      height:70%;padding:0 10px 42px;align-items:flex-end;
+    }
+    .arca-video-stage,.gymga-stage,.crypto-stage{
+      width:100%;height:auto;aspect-ratio:16/9;border-radius:16px;
+      flex:0 0 auto;
+    }
+    .arca-video-stage video,.gymga-video,.crypto-video{
+      width:100%;height:100%;object-fit:contain!important;object-position:center center!important;
+      transform:none!important;
+    }
+    .arca-logo-chip{width:142px;height:44px;right:16px;bottom:16px;padding:6px 8px}
+    .gymga-logo-chip{width:68px;height:54px;right:16px;bottom:16px;padding:6px}
+
+    /* Gormiti: show the whole supplied artwork, centred and undistorted. */
+    .gormiti-tile .tcg-scene{
+      height:69%;padding:0 12px 42px;display:flex;align-items:flex-end;justify-content:center;
+    }
+    .gormiti-tile .tcg-artwork{
+      width:100%;height:100%;max-width:none;object-fit:contain;object-position:center bottom;
+      filter:drop-shadow(0 12px 16px rgba(23,22,27,.16));
+    }
+    .gormiti-tile .gp-logo-chip{width:66px;height:52px;right:16px;bottom:16px;padding:5px}
+
+    /* AI Generativa: keep the ComfyUI composition fully inside the tile. */
+    .ai-tile .ai-scene{height:72%;bottom:8px;overflow:hidden}
+    .ai-tile .ai-scene>svg{width:100%;height:100%;transform:scale(.90);transform-origin:center bottom}
+    .ai-tile .ai-carousel,.ai-tile .ai-slide{overflow:hidden}
+    .ai-tile .ai-media{object-fit:contain!important;object-position:center center!important;transform:none!important}
+
+    /* XSoccer: two equal, proportional video windows. */
+    .xs-scene{height:69%;padding:0 10px 42px;gap:8px;align-items:flex-end}
+    .xs-video-card{width:calc(50% - 4px);height:auto;aspect-ratio:9/16;border-radius:12px}
+    .xs-video-card video{object-fit:contain!important;object-position:center center!important;transform:none!important;background:#15161b}
+    .xs-tile:not(.flipped).mobile-active .xs-video-card video{transform:none!important}
+    .xs-bridge{bottom:39%}
+
+    /* Social Media: keep the complete phone and icon column visible. */
+    .smm-scene{height:72%;bottom:0;overflow:hidden}
+    .smm-scene>svg{width:100%;height:100%;transform:scale(.88);transform-origin:center bottom;overflow:hidden}
+    .tile--flip:not(.flipped).mobile-active .smm-scene .phone{transform:translate(-8px,20px) scale(.94)}
+
+    /* LinkedIn and generic logos/photos: never crop or distort. */
+    .li-logo{width:104px;height:104px;object-fit:contain;border-radius:24px}
+    .scene img,.gp-logo-chip img,.gymga-logo-chip img,.arca-logo{
+      max-width:100%;max-height:100%;object-fit:contain;object-position:center;image-rendering:auto;
+    }
+
+    /* Keep media behind the title and clear of the lower controls. */
+    .scene{z-index:2}
+    .tile__title{z-index:4;pointer-events:none}
+    .tile__arrow,.arca-logo-chip,.gymga-logo-chip,.gp-logo-chip{z-index:6}
+  }
+
+
+  /* ==========================================================
+     MOBILE ACTIVE TILE — precise per-project positioning
+     Requested 2026-07-30. Desktop remains unchanged.
+     ========================================================== */
+  @media (max-width:768px){
+    /* Arcabooking: video frame centred vertically in the tile. */
+    .arca-scene{
+      left:0;top:21%;bottom:auto;height:61%;
+      padding:0 10px;align-items:center;justify-content:center;
+    }
+    .arca-video-stage{width:96%;max-width:640px;margin:0 auto}
+
+    /* AI Generativa: larger central workflow and larger LoRA badge. */
+    .ai-tile .ai-scene{
+      left:50%;top:19%;bottom:auto;width:100%;height:64%;
+      transform:translateX(-50%);display:flex;align-items:center;justify-content:center;
+      overflow:visible;
+    }
+    .ai-tile .ai-scene>svg{
+      width:108%;height:108%;transform:scale(1.04);transform-origin:center center;
+    }
+    .ai-tile .ai-scene .lora{
+      transform-box:fill-box;transform-origin:center;
+    }
+    .ai-tile:not(.flipped).mobile-active .ai-scene .lora{
+      transform:translateY(8px) scale(1.18)!important;
+    }
+
+    /* Gormiti: card artwork centred in the tile. */
+    .gormiti-tile .tcg-scene{
+      left:0;top:20%;bottom:auto;height:62%;padding:0 14px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .gormiti-tile .tcg-artwork{
+      width:96%;height:auto;max-height:100%;object-fit:contain;object-position:center center;
+      transform-origin:center center;
+    }
+    .tile--flip:not(.flipped).mobile-active .tcg-artwork{
+      transform:translateY(0) scale(1)!important;
+    }
+
+    /* XSoccer: native ~2.03:1 frames, no letterbox / black unused space. */
+    .xs-scene{
+      left:0;top:25%;bottom:auto;height:48%;padding:0 10px;
+      align-items:center;justify-content:center;gap:8px;
+    }
+    .xs-video-card{
+      width:calc(50% - 4px);height:auto;aspect-ratio:2.025/1;
+      border-radius:12px;background:transparent;
+    }
+    .xs-video-card video{
+      width:100%;height:100%;object-fit:cover!important;object-position:center center!important;
+      background:transparent!important;transform:none!important;
+    }
+    .xs-tile:not(.flipped).mobile-active .xs-video-card video{transform:none!important}
+    .xs-bridge{bottom:50%;transform:translate(-50%,50%)}
+    .xs-tile:not(.flipped).mobile-active .xs-bridge{transform:translate(-50%,50%)}
+
+    /* GymGamEnt: video frame centred vertically in the tile. */
+    .gymga-scene{
+      left:0;top:21%;bottom:auto;height:61%;
+      padding:0 10px;align-items:center;justify-content:center;
+    }
+    .gymga-stage{width:96%;max-width:640px;margin:0 auto}
+
+    /* Social Media: complete composition centred in the tile. */
+    .smm-scene{
+      left:0;top:19%;bottom:auto;height:65%;
+      display:flex;align-items:center;justify-content:center;overflow:visible;
+    }
+    .smm-scene>svg{
+      width:104%;height:104%;transform:scale(1);transform-origin:center center;
+    }
+    .tile--flip:not(.flipped).mobile-active .smm-scene .phone{
+      transform:translate(-8px,0) scale(1)!important;
+    }
+
+    /* CryptoChronic: video frame centred vertically in the tile. */
+    .crypto-scene{
+      left:0;top:21%;bottom:auto;height:61%;
+      padding:0 10px;align-items:center;justify-content:center;
+    }
+    .crypto-stage{width:96%;max-width:640px;margin:0 auto}
+  }
+
+  @media (max-width:420px){
+    .tile--big{height:540px}
+    .arca-scene,.gymga-scene,.crypto-scene,.gormiti-tile .tcg-scene,.xs-scene{padding-bottom:46px}
+    .ai-tile .ai-scene{height:69%}
+    .smm-scene{height:70%}
+    .xs-label{font-size:.42rem;max-width:calc(100% - 14px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  }
+
+
+  /* ===== ROBUST FLIP ISOLATION — prevents front content bleeding through on mobile/iOS ===== */
+  .tile--flip .face--front{
+    opacity:1;
+    visibility:visible;
+    z-index:2;
+    pointer-events:auto;
+    transition:opacity .18s ease, visibility 0s linear 0s;
+  }
+  .tile--flip .face--back{
+    opacity:0;
+    visibility:hidden;
+    z-index:1;
+    pointer-events:none;
+    transition:opacity .18s ease, visibility 0s linear .18s;
+  }
+  .tile--flip.flipped .face--front{
+    opacity:0!important;
+    visibility:hidden!important;
+    z-index:1;
+    pointer-events:none!important;
+    transition:opacity .12s ease, visibility 0s linear .12s;
+  }
+  .tile--flip.flipped .face--back{
+    opacity:1!important;
+    visibility:visible!important;
+    z-index:3;
+    pointer-events:auto!important;
+    transition:opacity .18s ease .08s, visibility 0s linear 0s;
+  }
+  .tile--flip.flipped .face--front .tile__title,
+  .tile--flip.flipped .face--front .tile__title .sub,
+  .tile--flip.flipped .face--front .scene,
+  .tile--flip.flipped .face--front .tile__arrow,
+  .tile--flip.flipped .face--front video,
+  .tile--flip.flipped .face--front img{
+    opacity:0!important;
+    visibility:hidden!important;
+    animation:none!important;
+    pointer-events:none!important;
+  }
+
+  @media (max-width:768px){
+    /* Never activate front-side hover effects while a card is showing its back. */
+    .tile--flip.flipped.mobile-active .face--front,
+    .arca-tile.flipped.mobile-active .arca-video-stage,
+    .gymga-tile.flipped.mobile-active .gymga-stage,
+    .crypto-tile.flipped.mobile-active .crypto-stage{
+      opacity:0!important;
+      visibility:hidden!important;
+      pointer-events:none!important;
+    }
+    .tile--flip.flipped .face--back{
+      transform:rotateY(180deg) translateZ(1px);
+      -webkit-transform:rotateY(180deg) translateZ(1px);
+    }
+    .tile--flip.flipped .face--front{
+      transform:translateZ(-1px);
+      -webkit-transform:translateZ(-1px);
+    }
+  }
 </style>
 </head>
 <body>
