@@ -410,6 +410,7 @@
   .ai-slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
   .ai-slide.active{opacity:1}
   .ai-media{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center}
+  .ai-mobile-frame{display:none}
 
   /* ---------- XSOCCER: standard tile ---------- */
   .xs-tile .face--front{background:#ECEAE3}
@@ -1174,6 +1175,107 @@
       object-position:center!important;
     }
   }
+
+
+  /* FINAL MOBILE OVERRIDE — AI mobile uses only centered media frame, XSoccer equal stacked cards */
+  @media (max-width:768px){
+    /* AI Generativa: hide all decorative graphics and show only the centered media frame. */
+    .ai-tile .ai-scene{
+      top:26%!important;
+      height:56%!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      overflow:visible!important;
+      padding:0!important;
+    }
+    .ai-tile .ai-scene > svg{
+      display:none!important;
+      opacity:0!important;
+      visibility:hidden!important;
+    }
+    .ai-tile .ai-mobile-frame{
+      display:block!important;
+      width:min(39vw,152px)!important;
+      min-width:122px!important;
+      aspect-ratio:130/225!important;
+      border-radius:14px!important;
+      overflow:hidden!important;
+      background:#141318!important;
+      border:2px solid rgba(44,42,40,.22)!important;
+      box-shadow:0 16px 34px rgba(0,0,0,.24)!important;
+      margin:0 auto!important;
+      position:relative!important;
+    }
+    .ai-tile .ai-mobile-frame .ai-carousel{
+      display:grid!important;
+      grid-template:1fr/1fr!important;
+      width:100%!important;
+      height:100%!important;
+      overflow:hidden!important;
+      background:#141318!important;
+    }
+    .ai-tile .ai-mobile-frame .ai-slide{
+      grid-area:1/1!important;
+      position:relative!important;
+      inset:auto!important;
+      width:100%!important;
+      height:100%!important;
+      overflow:hidden!important;
+      opacity:0;
+      transition:opacity .7s ease;
+    }
+    .ai-tile .ai-mobile-frame .ai-slide.active{opacity:1!important}
+    .ai-tile .ai-mobile-frame .ai-media{
+      display:block!important;
+      width:100%!important;
+      height:100%!important;
+      max-width:100%!important;
+      max-height:100%!important;
+      object-fit:cover!important;
+      object-position:center center!important;
+      position:relative!important;
+      inset:auto!important;
+      transform:none!important;
+      background:#141318!important;
+    }
+
+    /* XSoccer: stacked cards, larger, identical size. */
+    .xs-scene{
+      top:23%!important;
+      height:58%!important;
+      display:flex!important;
+      flex-direction:column!important;
+      align-items:center!important;
+      justify-content:center!important;
+      gap:12px!important;
+      padding:0 0 0!important;
+    }
+    .xs-video-card,
+    .xs-video-card--left,
+    .xs-video-card--right{
+      width:min(86%,310px)!important;
+      height:auto!important;
+      aspect-ratio:16/9!important;
+      flex:0 0 auto!important;
+      margin:0 auto!important;
+      padding:0!important;
+      border-radius:14px!important;
+      overflow:hidden!important;
+      box-sizing:border-box!important;
+    }
+    .xs-video-card video{
+      width:100%!important;
+      height:100%!important;
+      object-fit:cover!important;
+      object-position:center center!important;
+      transform:none!important;
+      background:transparent!important;
+    }
+    .xs-tile:not(.flipped).mobile-active .xs-video-card video{transform:none!important}
+    .xs-bridge{display:none!important}
+  }
+
 </style>
 </head>
 <body>
@@ -1352,6 +1454,23 @@
 <path d="M455 208 l13 9 l-13 9 z" fill="#fff"></path>
 </g>
 </svg>
+<div aria-hidden="true" class="ai-mobile-frame">
+  <div class="ai-carousel" xmlns="http://www.w3.org/1999/xhtml">
+    <div class="ai-slide active"><img alt="" class="ai-media" src="/assets/images/image-02-fdcbf42098d2.jpg"/></div>
+    <div class="ai-slide"><img alt="" class="ai-media" src="/assets/images/image-03-3c7087f5f193.jpg"/></div>
+    <div class="ai-slide">
+      <video class="ai-media" muted="" playsinline="" preload="auto" webkit-playsinline="">
+        <source src="/assets/videos/video-02-954ccb5c5836.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="ai-slide"><img alt="" class="ai-media" src="/assets/images/image-04-7fbf71299723.jpg"/></div>
+    <div class="ai-slide">
+      <video class="ai-media" muted="" playsinline="" preload="auto" webkit-playsinline="">
+        <source src="/assets/videos/video-03-3c385db79113.mp4" type="video/mp4"/>
+      </video>
+    </div>
+  </div>
+</div>
 </div>
 <div class="tile__title">
 <h3>AI Generativa</h3>
