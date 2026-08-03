@@ -404,6 +404,22 @@
   /* Nessun pulsante play sovrapposto */
   .ai-tile .ai-scene .play{display:none!important}
 
+  /* ---------- CARDINE CONSULTING: a riposo solo titolo, hover = sfondo dashboard scuro ---------- */
+  .cardine-tile .cardine-scene{opacity:0;transition:opacity .4s ease}
+  .cardine-tile:not(.flipped):hover .cardine-scene{opacity:1}
+  .cardine-tile .face--front{transition:background .5s ease}
+  .cardine-tile:not(.flipped):hover .face--front{
+    background-color:#181818;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px),
+      radial-gradient(circle at 26% 70%,rgba(43,58,240,.14),transparent 36%),
+      radial-gradient(circle at 74% 32%,rgba(111,192,138,.10),transparent 36%);
+    background-size:24px 24px,24px 24px,100% 100%,100% 100%;
+  }
+  .cardine-tile:not(.flipped):hover .tile__title h3{color:#fff}
+  .cardine-tile:not(.flipped):hover .tile__title .sub{color:#B9B7FF}
+
   /* ---------- AI GENERATIVA CAROUSEL (lives inside the small output frame via foreignObject) ---------- */
   .ai-tile{cursor:pointer}
   .ai-carousel{position:relative;width:100%;height:100%;overflow:hidden;background:#141318}
@@ -716,6 +732,18 @@
   }
     .ai-tile:not(.flipped).mobile-active .tile__title h3{color:#fff}
     .ai-tile:not(.flipped).mobile-active .tile__title .sub{color:#B9B7FF}
+    .cardine-tile:not(.flipped).mobile-active .cardine-scene{opacity:1}
+    .cardine-tile:not(.flipped).mobile-active .face--front{
+    background-color:#181818;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px),
+      radial-gradient(circle at 26% 70%,rgba(43,58,240,.14),transparent 36%),
+      radial-gradient(circle at 74% 32%,rgba(111,192,138,.10),transparent 36%);
+    background-size:24px 24px,24px 24px,100% 100%,100% 100%;
+  }
+    .cardine-tile:not(.flipped).mobile-active .tile__title h3{color:#fff}
+    .cardine-tile:not(.flipped).mobile-active .tile__title .sub{color:#B9B7FF}
     .tile--flip:not(.flipped).mobile-active .ai-scene .lora{transform:translateY(8px)}
     .xs-tile:not(.flipped).mobile-active .xs-video-card{opacity:1;transform:translateY(0)}
     .xs-tile:not(.flipped).mobile-active .xs-video-card video{filter:saturate(1) brightness(1);transform:scale(1.07)}
@@ -1276,6 +1304,16 @@
     .xs-bridge{display:none!important}
   }
 
+
+  .lang-toggle{display:inline-flex;align-items:center;gap:2px;margin-left:12px;padding:3px;border:1px solid var(--hair);border-radius:999px;background:rgba(255,255,255,.7)}
+  .lang-toggle button{border:0;background:transparent;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.65rem;letter-spacing:.08em;padding:6px 8px;border-radius:999px;cursor:pointer;transition:background .25s ease,color .25s ease}
+  .lang-toggle button.active{background:var(--accent);color:#fff}
+  @media(max-width:640px){
+    .lang-toggle{margin-left:6px;padding:2px}
+    .lang-toggle button{font-size:.58rem;padding:5px 6px}
+    .navlinks{gap:10px}
+  }
+
 </style>
 </head>
 <body>
@@ -1309,6 +1347,10 @@
 <a href="#lavori">Lavori</a>
 <a href="#chi-sono">Chi sono</a>
 <a href="#contatti">Contatti</a>
+<div class="lang-toggle" aria-label="Seleziona lingua">
+<button class="active" id="langIT" type="button" aria-pressed="true">IT</button>
+<button id="langEN" type="button" aria-pressed="false">EN</button>
+</div>
 </div>
 </div>
 </nav>
@@ -1382,6 +1424,75 @@
 </ul>
 <div class="back-tools"><span>Product Design</span><span>UI / UX</span><span>Web App</span><span>Pet Tech</span><span>Brand Identity</span></div>
 <a class="gymga-link" href="https://www.arcabooking.net/" rel="noopener" target="_blank">Apri Arcabooking ↗</a>
+</div>
+</div>
+</div>
+</div>
+<!-- ===== /TILE ===== -->
+<!-- ===== TILE: CARDINE CONSULTING (flip) ===== -->
+<div class="reveal">
+<div aria-label="Cardine Consulting — clicca per vedere le competenze" aria-pressed="false" class="tile tile--big tile--flip cardine-tile" id="project-cardine" role="button" tabindex="0">
+<div class="flip">
+<div class="face face--front">
+<div aria-hidden="true" class="scene cardine-scene">
+<svg viewbox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+<path d="M118 92 C160 108 168 128 198 132" fill="none" stroke="#C9C6BE" stroke-width="2"></path>
+<path d="M118 168 C160 152 168 136 198 132" fill="none" stroke="#C9C6BE" stroke-width="2"></path>
+<path d="M198 132 C232 132 240 108 282 96" fill="none" stroke="#C9C6BE" stroke-width="2"></path>
+<path d="M198 132 C232 132 240 156 282 168" fill="none" stroke="#C9C6BE" stroke-width="2"></path>
+<g>
+<rect fill="#fff" height="52" rx="14" stroke="#DDD9CF" width="94" x="44" y="66"></rect>
+<circle cx="66" cy="92" fill="#2B3AF0" r="6"></circle>
+<rect fill="#E5E1D8" height="6" rx="3" width="46" x="80" y="82"></rect>
+<rect fill="#E5E1D8" height="6" rx="3" width="32" x="80" y="96"></rect>
+</g>
+<g>
+<rect fill="#fff" height="52" rx="14" stroke="#DDD9CF" width="94" x="44" y="142"></rect>
+<rect fill="#6FC08A" height="14" rx="4" width="14" x="60" y="172"></rect>
+<rect fill="#6FC08A" height="24" rx="4" width="14" x="80" y="162"></rect>
+<rect fill="#6FC08A" height="34" rx="4" width="14" x="100" y="152"></rect>
+</g>
+<g class="cardine-pivot">
+<circle cx="198" cy="132" fill="#141318" r="16"></circle>
+<circle cx="198" cy="132" fill="none" r="26" stroke="#8A88FF" stroke-dasharray="3 5" stroke-width="2"></circle>
+</g>
+<g>
+<rect fill="#fff" height="52" rx="14" stroke="#DDD9CF" width="94" x="282" y="70"></rect>
+<circle cx="304" cy="96" fill="none" r="11" stroke="#2B3AF0" stroke-width="3"></circle>
+<circle cx="304" cy="96" fill="#2B3AF0" r="3"></circle>
+<rect fill="#E5E1D8" height="6" rx="3" width="38" x="322" y="92"></rect>
+</g>
+<g>
+<rect fill="#fff" height="52" rx="14" stroke="#DDD9CF" width="94" x="282" y="142"></rect>
+<rect fill="#F58BB0" height="10" rx="3" width="14" x="298" y="158"></rect>
+<rect fill="#8A88FF" height="10" rx="3" width="14" x="318" y="158"></rect>
+<rect fill="#E5E1D8" height="10" rx="3" width="14" x="338" y="158"></rect>
+<rect fill="#8A88FF" height="10" rx="3" width="14" x="298" y="172"></rect>
+</g>
+</svg>
+</div>
+<div class="tile__title">
+<h3>Cardine Consulting</h3>
+<span class="sub">clicca per esplorare ↻</span>
+</div>
+<div aria-hidden="true" class="tile__arrow">⟳</div>
+</div>
+<div class="face face--back">
+<span class="back-hint">↩ chiudi</span>
+<span class="back-eyebrow">Cardine Consulting</span>
+<p class="back-lead">Sito aziendale fittizio costruito per imparare e dimostrare automazione, agenti AI e sviluppo full-stack, dal primo prototipo al deploy in produzione.</p>
+<ul class="back-list">
+<li>Chatbot con tool-calling (Claude) collegato a calendario, CRM e knowledge base RAG</li>
+<li>Agente autonomo per i lead: classificazione, arricchimento, bozza di risposta e notifica Slack</li>
+<li>Automazioni n8n: notifiche, follow-up e prenotazione call su Google Calendar</li>
+<li>RAG su vector DB (Qdrant + Voyage AI) per rispondere con la reale knowledge base aziendale</li>
+<li>Mini-CRM con approvazione bozze, lead scoring e dashboard analytics</li>
+<li>Login con ruoli (admin/dipendente/cliente) e deploy in produzione</li>
+</ul>
+<div class="back-tools">
+<span>n8n</span><span>Claude API</span><span>Node.js</span><span>Qdrant</span><span>Voyage AI</span><span>Google Calendar</span><span>Supabase</span><span>Render</span><span>Vercel</span><span>Slack</span>
+</div>
+<a class="gymga-link" href="https://cardine-sito.vercel.app/" rel="noopener" target="_blank">Apri Cardine Consulting ↗</a>
 </div>
 </div>
 </div>
@@ -1914,7 +2025,7 @@
 
   /* ---- Rotating / shuffleable word ---- */
   (function(){
-    var words=["interfacce","magazine automatizzati","AI tools","identità visive","e-commerce","campagne generative","siti web","card games"];
+    var wordsIT=["interfacce","magazine automatizzati","AI tools","identità visive","e-commerce","campagne generative","siti web","card games"], wordsEN=["interfaces","automated magazines","AI tools","visual identities","e-commerce products","generative campaigns","websites","card games"], words=(window.__portfolioLanguage==="en"?wordsEN:wordsIT);
     var el=document.getElementById("rotator");
     if(!el) return;
     var i=0, timer=null;
@@ -1924,6 +2035,7 @@
     function reset(){if(timer)clearInterval(timer);if(!reduce)timer=setInterval(next,2400);}
     el.addEventListener("click",shuffle);
     el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();shuffle();}});
+    window.addEventListener("portfolio:languagechange",function(e){words=e.detail.lang==="en"?wordsEN:wordsIT;i=0;el.textContent=words[0];reset();});
     reset();
   })();
 
@@ -2213,5 +2325,51 @@
   });
 })();
 </script>
+
+<script>
+(function(){
+  const translations = {"Inizio": "Home", "Lavori": "Work", "Chi sono": "About", "Contatti": "Contact", "Generalista digitale · Creative Technologist": "Digital Generalist · Creative Technologist", "Faccio": "I make", "molte": "many", "cose": "things", "Progetto, scrivo codice, disegno e addestro modelli.": "I design, code, create and train models.", "Credo che le idee migliori nascano ai bordi, dove le discipline si toccano.": "I believe the best ideas emerge at the edges, where disciplines meet.", "Credo che un buon generalista non sappia “un po' di tutto”: sappia": "I believe a strong generalist does not simply know “a little about everything”: they know how to", "collegare le cose": "connect the dots", "Costruisco prodotti interi — dall'idea al deploy.": "I build complete products — from idea to deployment.", "Meno etichette. Più cose finite.": "Fewer labels. More finished products.", "Oggi costruisco": "Today I build", "← cliccami": "← click me", "Scrivimi ↗": "Email me ↗", "/ scegli un colore ✦": "/ choose a colour ✦", "/ passaci sopra ✦": "/ hover over them ✦", "Pet sitting · tracking live · full build": "Pet sitting · live tracking · full build", "↩ chiudi": "↩ close", "Piattaforma digitale per il pet care, progettata come prodotto completo: esperienza, servizi e identità.": "A digital pet-care platform designed as a complete product: experience, services and identity.", "Ideazione e progettazione dell'esperienza utente e delle principali funzionalità": "Concept and design of the user experience and core features", "UI/UX di piattaforma, dashboard, servizi e strumenti dedicati a owner e pet sitter": "Platform, dashboard, services and tools UI/UX for pet owners and sitters", "Costruzione dell'identità visiva e coordinamento tra design, contenuti e sviluppo": "Visual identity creation and coordination across design, content and development", "Dal concept al prodotto online, con testing e miglioramento continuo": "From concept to live product, with testing and continuous improvement", "Apri Arcabooking ↗": "Open Arcabooking ↗", "clicca per esplorare ↻": "click to explore ↻", "Immagini e video foto-realistici, addestrati sul tuo brand.": "Photorealistic images and videos trained on your brand.", "Workflow ComfyUI costruiti e configurati da zero": "ComfyUI workflows built and configured from scratch", "Immagini:": "Images:", "Video:": "Video:", "modello + LoRA": "model + LoRA", "LoRA personalizzate su volti, prodotti e stili": "Custom LoRAs for faces, products and visual styles", "Video generativi coerenti, non solo clip isolate": "Consistent generative video, not just isolated clips", "Pipeline su GPU cloud, pronte per la produzione": "Production-ready cloud GPU pipelines", "Gameplay, pull rate e produzione fisica delle carte — dal bilanciamento al foil.": "Gameplay, pull rates and physical card production — from balancing to foil finishing.", "Game design e bilanciamento del gameplay": "Game design and gameplay balancing", "Playtesting e iterazione delle regole": "Playtesting and rule iteration", "Progettazione pull rate e rarità delle bustine": "Pull-rate and booster-rarity design", "Specifiche di stampa e foilatura delle carte": "Printing and foil specifications", "Guarda il video ↗": "Watch the video ↗", "Artwork non a mio carico": "Artwork not created by me", "Azioni calcistiche generate dall'AI, vissute in prima persona in VR.": "AI-generated football actions experienced first-hand in VR.", "AI Action: generazione IA di azioni calcistiche in 2D dall'alto, con dati reali di squadre e giocatori da API ufficiali (ruolo, altezza, piede preferito, e altro)": "AI Action: top-down 2D football-action generation using real team and player data from official APIs, including role, height and preferred foot", "Esportazione delle azioni generate in JSON": "Export of generated actions to JSON", "XSoccer: import dei JSON e ricostruzione delle azioni su un campo 3D navigabile": "XSoccer: JSON import and reconstruction of actions on a navigable 3D pitch", "Modifica di azioni e caratteristiche fisiche dei giocatori 3D": "Editing of actions and physical attributes of 3D players", "Free cam e modalità VR per entrare nell'azione in prima persona": "Free-camera and VR modes for entering the action in first person", "API Sportive": "Sports APIs", "UI / UX design per l'ecosistema GymgaPlay: store, collection e profilo utente.": "UI/UX design for the GymgaPlay ecosystem: store, collection and user profile.", "Progettazione della UI/UX dello Store, con card gioco, filtri e flussi di navigazione": "Store UI/UX design, including game cards, filters and navigation flows", "Design della Collection personale, focalizzata su accesso rapido ai contenuti salvati": "Personal Collection design focused on quick access to saved content", "Progettazione della schermata Profilo con progressione, mastery e trophy case": "Profile screen design with progression, mastery and trophy case", "Sistema visivo coerente con gamification, chiarezza funzionale e identità di brand": "A coherent visual system balancing gamification, usability and brand identity", "Apri GymGamEnt ↗": "Open GymGamEnt ↗", "Ho seguito aziende reali sui social: contenuti, sponsorizzate, risultati.": "I managed real companies on social media: content, paid campaigns and results.", "Gestione pagine e calendario contenuti": "Page management and content calendar", "Meta Business Suite e campagne sponsorizzate": "Meta Business Suite and paid campaigns", "Content creation e grafica con Canva": "Content creation and visual design with Canva", "Copy, pianificazione editoriale e reportistica": "Copywriting, editorial planning and reporting", "Sponsorizzate": "Paid Campaigns", "UI / UX, game design e testing intensivo per un'esperienza costruita attorno a progressione, challenges ed economia interna.": "UI/UX, game design and intensive testing for an experience built around progression, challenges and an internal economy.", "Progettazione della UI/UX e dei principali flussi di gioco": "UI/UX and core game-flow design", "Ideazione delle meccaniche e del ciclo di gioco completo": "Design of mechanics and the complete game loop", "Bilanciamento delle tempistiche e della valuta interna in crypto": "Balancing of pacing and the internal crypto currency", "Ideazione delle challenges presenti nel gioco": "Design of in-game challenges", "Testing intensivo, raccolta delle evidenze e verifica sistematica dei bug fix": "Intensive testing, evidence collection and systematic bug-fix verification", "/ in breve": "/ in brief", "Per me, essere un Creativo digitale significa trasformare idee, intuizioni e visioni in prodotti concreti, unendo design, tecnologia, intelligenza artificiale e sviluppo fino alla pubblicazione online.": "To me, being a Digital Creative means turning ideas, insights and visions into tangible products by combining design, technology, artificial intelligence and development through to online release.", "Negli anni ho spaziato tra identità visiva, sviluppo web ed e-commerce, cyber security, social media management, game design e strumenti AI. Non per indecisione, ma perché il valore vero, per me": "Over the years I have worked across visual identity, web and e-commerce development, cybersecurity, social media management, game design and AI tools. Not because of indecision, but because the real value, for me", "oggi": "today", ", sta nel cucire insieme competenze che di solito vivono in stanze separate.": ", lies in bringing together skills that usually live in separate rooms.", "Il risultato è che posso prendere in carico un progetto intero — dalla prima riga di brief all'ultima riga di codice — e consegnarlo finito.": "The result is that I can take ownership of an entire project — from the first line of the brief to the last line of code — and deliver it complete.", "Esperienze lavorative": "Professional Experience", "/ percorso": "/ career", "set 2024 – Presente": "Sep 2024 – Present", "1 anno e 11 mesi": "1 year 11 months", "Progettazione UI/UX dell’ecosistema GymgaPlay, inclusi Store, Collection e Profilo; definizione dei flussi di navigazione, sistemi di gamification, progressione, mastery e trophy case, con attenzione alla coerenza visiva e all’identità del prodotto.": "UI/UX design for the GymgaPlay ecosystem, including Store, Collection and Profile; definition of navigation flows, gamification systems, progression, mastery and trophy case, with a focus on visual consistency and product identity.", "4 anni e 7 mesi": "4 years 7 months", "Ideazione e realizzazione di prodotti digitali completi, combinando UI/UX, identità visiva, sviluppo web ed e-commerce, automazioni, intelligenza artificiale generativa e coordinamento del percorso dall’idea al deploy.": "Concept and delivery of complete digital products combining UI/UX, visual identity, web and e-commerce development, automation, generative AI and end-to-end coordination from idea to deployment.", "Progetto XSoccer": "XSoccer Project", "All’interno dell’attività Be2Bit ho progettato anche XSoccer, un sistema che trasforma azioni calcistiche generate dall’AI in scene 3D modificabili e fruibili in VR.": "Within Be2Bit I also designed XSoccer, a system that transforms AI-generated football actions into editable 3D scenes accessible in VR.", "Generazione in AI Action di azioni calcistiche 2D dall’alto, basate su dati reali di squadre e giocatori ottenuti da API sportive.": "Generation in AI Action of top-down 2D football actions based on real team and player data obtained from sports APIs.", "Esportazione delle azioni in JSON e importazione in XSoccer per la ricostruzione su un campo 3D navigabile.": "Export of actions to JSON and import into XSoccer for reconstruction on a navigable 3D pitch.", "Modifica delle azioni e delle caratteristiche fisiche dei giocatori tridimensionali.": "Editing of actions and physical attributes of three-dimensional players.", "Sviluppo di free camera e modalità VR per osservare o vivere l’azione in prima persona.": "Development of free-camera and VR modes to observe or experience the action in first person.", "1 gen 2026 – 1 lug 2026": "1 Jan 2026 – 1 Jul 2026", "Progettazione dell’esperienza e dell’interfaccia della piattaforma di pet sitting, dei flussi di ricerca e prenotazione, di ArcaMap, ArcaLive, ArcaMedia e ArcaStory, oltre alla definizione dell’identità visiva e dei contenuti di presentazione del prodotto.": "Experience and interface design for the pet-sitting platform, search and booking flows, ArcaMap, ArcaLive, ArcaMedia and ArcaStory, as well as visual identity and product-presentation content.", "Oltre alla progettazione del prodotto e dell’esperienza utente, ho seguito attività operative di comunicazione digitale e ottimizzazione della presenza online di ArcaBooking.": "Alongside product and user-experience design, I managed digital communication and online-presence optimisation for ArcaBooking.", "Definizione della strategia editoriale e ideazione dei contenuti per i canali social.": "Definition of editorial strategy and content concepts for social channels.", "Produzione e adattamento di visual, copy e materiali promozionali, anche tramite workflow basati su AI generativa.": "Production and adaptation of visuals, copy and promotional materials, including generative-AI workflows.", "Coordinamento del piano di pubblicazione e coerenza della comunicazione con identità e posizionamento del prodotto.": "Coordination of the publishing plan and alignment of communication with product identity and positioning.", "Strutturazione delle pagine e dei contenuti in ottica SEO, gestione delle priorità di indicizzazione e miglioramento della visibilità organica.": "SEO-oriented page and content structure, indexing-priority management and improvement of organic visibility.", "Analisi degli aspetti tecnici e prestazionali rilevanti per l’indicizzazione e l’esperienza di navigazione.": "Analysis of technical and performance factors relevant to indexing and browsing experience.", "Ideazione del sistema di gioco e delle carte, definizione di regole, statistiche, bilanciamento e interazioni, sviluppo della direzione visiva e preparazione del prodotto per un’IP internazionale, mantenendo coerenza con il brand Gormiti.": "Design of the game system and cards, rules, statistics, balancing and interactions, visual direction and product preparation for an international IP while maintaining consistency with the Gormiti brand.", "apr 2026 – giu 2026": "Apr 2026 – Jun 2026", "Definizione della strategia editoriale, ideazione e produzione di contenuti, coordinamento del piano di pubblicazione e adattamento dei materiali ai diversi canali, con supporto di strumenti AI per visual, copy e ottimizzazione del workflow.": "Editorial-strategy definition, content concept and production, publishing-plan coordination and adaptation of materials across channels, supported by AI tools for visuals, copy and workflow optimisation.", "Progettazione UI/UX e meccaniche di gioco, definizione del game loop, delle tempistiche e dell’equilibrio della crypto-valuta interna; ideazione delle challenges, testing intensivo, raccolta delle evidenze e verifica dei bug fix.": "UI/UX and game-mechanics design, definition of the game loop, pacing and internal crypto-currency balance; challenge design, intensive testing, evidence collection and bug-fix verification.", "Certificazioni": "Certifications", "/ formazione": "/ training", "Costruiamo": "Shall we build", "qualcosa insieme?": "something together?", "Email": "Email", "Torna in cima alla pagina": "Back to top", "Seleziona lingua": "Select language", "Mostra tutti i lavori": "Show all projects", "Tema blu": "Blue theme", "Tema rosso": "Red theme", "Tema verde": "Green theme", "Tema viola": "Purple theme", "Cambia disciplina": "Change discipline", "Sito aziendale fittizio costruito per imparare e dimostrare automazione, agenti AI e sviluppo full-stack, dal primo prototipo al deploy in produzione.": "A fictitious company website built to learn and demonstrate automation, AI agents and full-stack development, from first prototype to production deployment.", "Chatbot con tool-calling (Claude) collegato a calendario, CRM e knowledge base RAG": "Tool-calling chatbot (Claude) connected to calendar, CRM and RAG knowledge base", "Agente autonomo per i lead: classificazione, arricchimento, bozza di risposta e notifica Slack": "Autonomous lead agent: classification, enrichment, draft reply and Slack notification", "Automazioni n8n: notifiche, follow-up e prenotazione call su Google Calendar": "n8n automations: notifications, follow-ups and Google Calendar call booking", "RAG su vector DB (Qdrant + Voyage AI) per rispondere con la reale knowledge base aziendale": "RAG on a vector DB (Qdrant + Voyage AI) answering from the real company knowledge base", "Mini-CRM con approvazione bozze, lead scoring e dashboard analytics": "Mini-CRM with draft approval, lead scoring and analytics dashboard", "Login con ruoli (admin/dipendente/cliente) e deploy in produzione": "Role-based login (admin/employee/client) and production deployment", "Apri Cardine Consulting ↗": "Open Cardine Consulting ↗"};
+  const reverse = Object.fromEntries(Object.entries(translations).map(([it,en])=>[en,it]));
+  const attrNames = ["aria-label","title","placeholder"];
+  let current = "it";
+
+  function replaceNodeText(node, dictionary){
+    const raw=node.nodeValue;
+    const trimmed=raw.trim();
+    if(!trimmed || !dictionary[trimmed]) return;
+    node.nodeValue=raw.replace(trimmed,dictionary[trimmed]);
+  }
+  function translateDOM(dictionary){
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(n){
+      const p=n.parentElement;
+      if(!p || ["SCRIPT","STYLE","NOSCRIPT"].includes(p.tagName)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }});
+    const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n=>replaceNodeText(n,dictionary));
+    document.querySelectorAll("*").forEach(el=>attrNames.forEach(a=>{
+      const v=el.getAttribute(a); if(v && dictionary[v]) el.setAttribute(a,dictionary[v]);
+    }));
+  }
+  function setLanguage(lang){
+    if(lang===current) return;
+    translateDOM(lang==="en"?translations:reverse);
+    current=lang;
+    document.documentElement.lang=lang;
+    document.title=lang==="en"?"Alex Cangini — Digital Generalist":"Alex Cangini — Generalista digitale";
+    document.getElementById("langIT")?.classList.toggle("active",lang==="it");
+    document.getElementById("langEN")?.classList.toggle("active",lang==="en");
+    document.getElementById("langIT")?.setAttribute("aria-pressed",lang==="it"?"true":"false");
+    document.getElementById("langEN")?.setAttribute("aria-pressed",lang==="en"?"true":"false");
+    window.__portfolioLanguage=lang;
+    window.dispatchEvent(new CustomEvent("portfolio:languagechange",{detail:{lang}}));
+  }
+  document.getElementById("langIT")?.addEventListener("click",()=>setLanguage("it"));
+  document.getElementById("langEN")?.addEventListener("click",()=>setLanguage("en"));
+  window.__portfolioLanguage="it";
+  window.setPortfolioLanguage=setLanguage;
+})();
+</script>
+
 </body>
 </html>
